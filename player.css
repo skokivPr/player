@@ -1477,3 +1477,112 @@ body {
 .view-image-btn.hidden {
   display: none;
 }
+
+@media (max-width: 768px) {
+    .controls-container {
+        flex-direction: column;
+        padding: 0px;
+        width: 500px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        height: 70px;
+    }
+}
+
+
+.controls-container {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) !important;
+    padding: 5px;
+    background: var(--accent-color-rgb);
+    backdrop-filter: blur(40px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    z-index: 1000;
+    box-shadow: var(--shadow-sm), var(--shadow-o);
+    transition: transform 0.3s ease, opacity 0.3s ease;  
+    opacity: 1;
+    border-radius: 5px;
+}
+
+
+.left-panel-btn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid transparent;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-color);
+    font-size: 14px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+	box-shadow: 0 0px 10px 1px #ffa50054;
+	opacity: 0.8;
+}
+
+.settings-btn {
+    position: fixed;
+    top: 10px;
+    right: 110px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.5);
+     border: 2px solid transparent;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-color);
+     font-size: 14px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+	box-shadow: 0 0px 10px 1px #ffa50054;
+	opacity: 0.8;
+}
+
+
+.settings-btn:hover,
+.left-panel-btn:hover{
+	transform: none;
+	border-color: orange;
+	box-shadow: 0 0px 10px 1px #ffa500;
+	text-shadow: 0px 0px 3px #fff;
+	opacity: 1;
+}
+
+
+.ambient-player {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden ;
+	background: transparent !important;
+}
+
+.btn-player{
+	background: transparent;
+	padding: 0px;
+		display: flex;
+	justify-content: center
+	
+}
+
+
