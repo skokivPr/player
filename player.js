@@ -260,7 +260,7 @@ async function playHLS(url) {
             currentPlayer = hls;
             hls.loadSource(url);
             hls.attachMedia(video);
-            hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
+            hls.on(Hls.Events.MANIFEST_PARSED, (_event, data) => {
                 const qualities = data.levels.map(level => ({
                     bitrate: level.bitrate,
                     resolution: `${level.width}x${level.height}`,
@@ -269,12 +269,12 @@ async function playHLS(url) {
                 updatePlayerStats({ qualities });
                 video.play().then(resolve).catch(reject);
             });
-            hls.on(Hls.Events.ERROR, (event, data) => {
+            hls.on(Hls.Events.ERROR, (_event, data) => {
                 if (data.fatal) {
                     reject(new Error(`HLS error: ${data.type} - ${data.details}`));
                 }
             });
-            hls.on(Hls.Events.FRAG_LOADED, (event, data) => {
+            hls.on(Hls.Events.FRAG_LOADED, (_event, data) => {
                 updatePlayerStats({
                     bandwidth: data.stats.bandwidth,
                     loading: data.stats.loading
@@ -484,7 +484,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Show controls on mouse move
     function showControls() {
         const controlsContainer = document.querySelector('.controls-container');
-        const toggleBtn = document.querySelector('.toggle-controls-btn');
 
         if (!controlsContainer.classList.contains('hidden')) {
             controlsContainer.classList.remove('hidden');
@@ -631,7 +630,6 @@ function clearUrlInput() {
 
 function selectQuality(quality) {
     currentQuality = quality;
-    const qualityOption = document.querySelector(`.quality-option[data-quality="${quality}"]`);
 
     // Update visual selection
     document.querySelectorAll('.quality-option').forEach(option => {
@@ -794,7 +792,6 @@ function sortPlaylist(order) {
 
 function renderPlaylist() {
     const playlistItems = document.getElementById('playlistItems');
-    const playlistControls = document.querySelector('.playlist-controls');
 
     if (playlist.length === 0) {
         playlistItems.innerHTML = '<div class="no-favorites">Playlista jest pusta</div>';
